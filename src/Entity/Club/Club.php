@@ -7,20 +7,28 @@ final class Club {
     public function __construct(
         private readonly ?int $id,
         private string $name,
+        private string $clubLogo,
+        private string $description,
+        private string $contact,
+        private string $hours,
         private string $address,
-        private int $number_members,
+        private int $number_members, //no se usa
         private bool $deleted
     ) {
     }
 
-    public static function create(string $name, string $address, int $number_members): self
+    public static function create(string $name, string $clubLogo, string $description, string $contact, string $hours, string $address, int $number_members): self
     {
-        return new self(null, $name, $address, $number_members, false);
+        return new self(null, $name, $clubLogo, $description, $contact, $hours, $address, $number_members, false);
     }
 
-    public function modify(string $name, string $address, int $number_members): void
+    public function modify(string $name, string $clubLogo, string $description, string $contact, string $hours, string $address, int $number_members): void
     {
         $this->name = $name;
+        $this->clubLogo = $clubLogo;
+        $this->description = $description;
+        $this->contact = $contact;
+        $this->hours = $hours;
         $this->address = $address;
         $this->number_members = $number_members;
     }
@@ -38,6 +46,26 @@ final class Club {
     public function name(): string
     {
         return $this->name;
+    }
+
+    public function clubLogo(): string
+    {
+        return $this->clubLogo;
+    }
+
+    public function description(): string
+    {
+        return $this->description;
+    }
+
+    public function contact(): string
+    {
+        return $this->contact;
+    }
+
+    public function hours(): string
+    {
+        return $this->hours;
     }
 
     public function address(): string

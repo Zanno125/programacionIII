@@ -37,10 +37,14 @@ final readonly class ClubRepository extends PDOManager implements ClubRepository
 
     public function insert(Club $club): void
     {
-        $query = "INSERT INTO club (name, address, number_members, deleted) VALUES (:name, :address, :number_members, :deleted) ";
+        $query = "INSERT INTO club (name, clubLogo, description, contact, hours, address, number_members, deleted) VALUES (:name, :clubLogo, :description, :contact, :hours, :address, :number_members, :deleted) ";
 
         $parameters = [
             "name" => $club->name(),
+            "clubLogo" => $club->clubLogo(),
+            "description" => $club->description(),
+            "contact" => $club->contact(),
+            "hours" => $club->hours(),
             "address" => $club->address(),
             "number_members" => $club->number_members(),
             "deleted" => $club->isDeleted()
@@ -56,6 +60,10 @@ final readonly class ClubRepository extends PDOManager implements ClubRepository
                             club
                         SET
                             name = :name,
+                            clubLogo = :clubLogo,
+                            description = :description,
+                            contact = :contact,
+                            hours = :hours,
                             address = :address,
                             number_members = :number_members,
                             deleted = :deleted
@@ -65,6 +73,10 @@ final readonly class ClubRepository extends PDOManager implements ClubRepository
 
         $parameters = [
             "name" => $club->name(),
+            "clubLogo" => $club->clubLogo(),
+            "description" => $club->description(),
+            "contact" => $club->contact(),
+            "hours" => $club->hours(),
             "address" => $club->address(),
             "number_members" => $club->number_members(),
             "deleted" => $club->isDeleted(),
@@ -83,6 +95,10 @@ final readonly class ClubRepository extends PDOManager implements ClubRepository
         return new Club(
             $primitive["id"],
             $primitive["name"],
+            $primitive["clubLogo"],
+            $primitive["description"],
+            $primitive["contact"],
+            $primitive["hours"],
             $primitive["address"],
             $primitive["number_members"],
             (bool) $primitive["deleted"]

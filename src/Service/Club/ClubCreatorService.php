@@ -12,9 +12,9 @@ final readonly class ClubCreatorService {
         $this->repository = new ClubRepository();
     }
 
-    public function create(string $name, string $address, int $number_members): void
+    public function create(string $name, string $clubLogo, string $description, string $contact, string $hours, string $address, int $number_members): void
     {
-        $club = Club::create($name, $address, $number_members);
+        $club = Club::create($name, $clubLogo, $description, $contact, $hours, $address, $number_members);
         $this->repository->insert($club);
     }
 }
