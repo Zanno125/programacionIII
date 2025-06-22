@@ -18,9 +18,6 @@ final readonly class ClubGetController {
             "name" => $club->name(),
             "clubLogo" => $club->clubLogo(),
             "description" => $club->description(),
-            "contact" => $club->contact(),
-            "hours" => $club->hours(),
-            "address" => $club->address(),
             "number_members" => $club->number_members(),
         ], true);
     }
