@@ -12,9 +12,13 @@ final readonly class ActivityCreatorService {
         $this->repository = new ActivityRepository();
     }
 
-    public function create(string $name, int $id_club, int $max_participants): void
+    public function create(string $name, string $nameActivity1, string $description1, string $childrenSchedules1, string $youthSchedules1,
+    string $nameActivity2, string $description2, string $childrenSchedules2, string $youthSchedules2,
+    string $nameActivity3, string $description3, string $childrenSchedules3, string $youthSchedules3): void
     {
-        $activity = Activity::create($name, $id_club, $max_participants);
+        $activity = Activity::create($name, $nameActivity1, $description1, $childrenSchedules1, $youthSchedules1,
+        $nameActivity2, $description2, $childrenSchedules2, $youthSchedules2,
+        $nameActivity3, $description3, $childrenSchedules3, $youthSchedules3);
         $this->repository->insert($activity);
     }
 }

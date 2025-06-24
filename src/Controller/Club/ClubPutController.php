@@ -13,10 +13,11 @@ final readonly class ClubPutController {
     public function start(int $id): void
     {
         $name = ControllerUtils::getPost("name");
-        $clubLogo = ControllerUtils::getPost("clubLogo");
         $description = ControllerUtils::getPost("description");
-        $number_members = ControllerUtils::getPost("number_members");
+        $address = ControllerUtils::getPost("address");
+        $activities = ControllerUtils::getPost("activities");
+        $hours = ControllerUtils::getPost("hours");
 
-        $this->service->update($name, $clubLogo, $description, $number_members, $id);
+        $this->service->update($name, $description, $address, $activities, $hours, $id);
     }
 }

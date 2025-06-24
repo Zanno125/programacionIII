@@ -16,9 +16,10 @@ final readonly class ClubGetController {
         echo json_encode([
             "id" => $club->id(),
             "name" => $club->name(),
-            "clubLogo" => $club->clubLogo(),
             "description" => $club->description(),
-            "number_members" => $club->number_members(),
+            "address" => $club->address(),
+            "activities" => $club->activities(),
+            "hours" => $club->hours(),
         ], true);
     }
 }

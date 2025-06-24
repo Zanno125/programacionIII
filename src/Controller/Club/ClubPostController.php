@@ -13,13 +13,11 @@ final readonly class ClubPostController {
     public function start(): void
     {
         $name = ControllerUtils::getPost("name");
-
-        $clubLogo = ControllerUtils::getPost("clubLogo");
-
         $description = ControllerUtils::getPost("description");
+        $address = ControllerUtils::getPost("address");
+        $activities = ControllerUtils::getPost("activities");
+        $hours = ControllerUtils::getPost("hours");
         
-        $number_members = ControllerUtils::getPost("number_members");
-
-        $this->service->create($name, $clubLogo, $description, $number_members);
+        $this->service->create($name, $description, $address, $activities, $hours);
     }
 }

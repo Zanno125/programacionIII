@@ -37,13 +37,14 @@ final readonly class ClubRepository extends PDOManager implements ClubRepository
 
     public function insert(Club $club): void
     {
-        $query = "INSERT INTO club (name, clubLogo, description, number_members, deleted) VALUES (:name, :clubLogo, :description, :number_members, :deleted) ";
+        $query = "INSERT INTO club (name, description, address, activities, hours, deleted) VALUES (:name, :description, :address, :activities, :hours, :deleted) ";
 
         $parameters = [
             "name" => $club->name(),
-            "clubLogo" => $club->clubLogo(),
             "description" => $club->description(),
-            "number_members" => $club->number_members(),
+            "address" => $club->address(),
+            "activities" => $club->activities(),
+            "hours" => $club->hours(),
             "deleted" => $club->isDeleted()
         ];
 
@@ -57,9 +58,10 @@ final readonly class ClubRepository extends PDOManager implements ClubRepository
                             club
                         SET
                             name = :name,
-                            clubLogo = :clubLogo,
                             description = :description,
-                            number_members = :number_members,
+                            address = :address,
+                            activities = :activities,
+                            hours = :hours,
                             deleted = :deleted
                         WHERE
                             id = :id
@@ -67,9 +69,10 @@ final readonly class ClubRepository extends PDOManager implements ClubRepository
 
         $parameters = [
             "name" => $club->name(),
-            "clubLogo" => $club->clubLogo(),
             "description" => $club->description(),
-            "number_members" => $club->number_members(),
+            "address" => $club->address(),
+            "activities" => $club->activities(),
+            "hours" => $club->hours(),
             "deleted" => $club->isDeleted(),
             "id" => $club->id()
         ];
@@ -86,9 +89,10 @@ final readonly class ClubRepository extends PDOManager implements ClubRepository
         return new Club(
             $primitive["id"],
             $primitive["name"],
-            $primitive["clubLogo"],
             $primitive["description"],
-            $primitive["number_members"],
+            $primitive["address"],
+            $primitive["activities"],
+            $primitive["hours"],
             (bool) $primitive["deleted"]
         );
     }

@@ -23,9 +23,10 @@ final readonly class ClubsGetController {
             $result[] = [
                 "id" => $response->id(),
                 "name" => $response->name(),
-                "clubLogo" => $response->clubLogo(),
                 "description" => $response->description(),
-                "number_members" => $response->number_members()
+                "address" => $response->address(),
+                "activities" => $response->activities(),
+                "hours" => $response->hours()
             ];
         }
 

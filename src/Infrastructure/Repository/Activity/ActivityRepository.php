@@ -37,12 +37,26 @@ final readonly class ActivityRepository extends PDOManager implements ActivityRe
 
     public function insert(Activity $activity): void
     {
-        $query = "INSERT INTO activity (name, id_club, max_participants, deleted) VALUES (:name, :id_club,:max_participants, :deleted) ";
+        $query = "INSERT INTO activity (name, nameActivity1, description1, childrenSchedules1, youthSchedules1,
+        nameActivity2, description2, childrenSchedules2, youthSchedules2,
+        nameActivity3, description3, childrenSchedules3, youthSchedules3, deleted) VALUES (:name, :nameActivity1, :description1, :childrenSchedules1, :youthSchedules1,
+        :nameActivity2, :description2, :childrenSchedules2, :youthSchedules2,
+        :nameActivity3, :description3, :childrenSchedules3, :youthSchedules3, :deleted) ";
 
         $parameters = [
             "name" => $activity->name(),
-            "id_club" => $activity->id_club(),
-            "max_participants" => $activity->max_participants(),
+            "nameActivity1" => $activity->nameActivity1(),
+            "description1" => $activity->description1(),
+            "childrenSchedules1" => $activity->childrenSchedules1(),
+            "youthSchedules1" => $activity->youthSchedules1(),
+            "nameActivity2" => $activity->nameActivity2(),
+            "description2" => $activity->description2(),
+            "childrenSchedules2" => $activity->childrenSchedules2(),
+            "youthSchedules2" => $activity->youthSchedules2(),
+            "nameActivity3" => $activity->nameActivity3(),
+            "description3" => $activity->description3(),
+            "childrenSchedules3" => $activity->childrenSchedules3(),
+            "youthSchedules3" => $activity->youthSchedules3(),
             "deleted" => $activity->isDeleted()
         ];
 
@@ -56,8 +70,18 @@ final readonly class ActivityRepository extends PDOManager implements ActivityRe
                             activity
                         SET
                             name = :name,
-                            id_club = :id_club,
-                            max_participants = :max_participants,
+                            nameActivity1 = :nameActivity1,
+                            description1 = :description1,
+                            childrenSchedules1 = :childrenSchedules1,
+                            youthSchedules1 = :youthSchedules1,
+                            nameActivity2 = :nameActivity2,
+                            description2 = :description2,
+                            childrenSchedules2 = :childrenSchedules2,
+                            youthSchedules2 = :youthSchedules2,
+                            nameActivity3 = :nameActivity3,
+                            description3 = :description3,
+                            childrenSchedules3 = :childrenSchedules3,
+                            youthSchedules3 = :youthSchedules3,
                             deleted = :deleted
                         WHERE
                             id = :id
@@ -65,8 +89,18 @@ final readonly class ActivityRepository extends PDOManager implements ActivityRe
 
         $parameters = [
             "name" => $activity->name(),
-            "id_club" => $activity->id_club(),
-            "max_participants" => $activity -> max_participants(),
+            "nameActivity1" => $activity->nameActivity1(),
+            "description1" => $activity->description1(),
+            "childrenSchedules1" => $activity->childrenSchedules1(),
+            "youthSchedules1" => $activity->youthSchedules1(),
+            "nameActivity2" => $activity->nameActivity2(),
+            "description2" => $activity->description2(),
+            "childrenSchedules2" => $activity->childrenSchedules2(),
+            "youthSchedules2" => $activity->youthSchedules2(),
+            "nameActivity3" => $activity->nameActivity3(),
+            "description3" => $activity->description3(),
+            "childrenSchedules3" => $activity->childrenSchedules3(),
+            "youthSchedules3" => $activity->youthSchedules3(),
             "deleted" => $activity->isDeleted(),
             "id" => $activity->id()
         ];
@@ -83,8 +117,18 @@ final readonly class ActivityRepository extends PDOManager implements ActivityRe
         return new Activity(
             $primitive["id"],
             $primitive["name"],
-            $primitive["id_club"],
-            $primitive["max_participants"],
+            $primitive["nameActivity1"],
+            $primitive["description1"],
+            $primitive["childrenSchedules1"],
+            $primitive["youthSchedules1"],
+            $primitive["nameActivity2"],
+            $primitive["description2"],
+            $primitive["childrenSchedules2"],
+            $primitive["youthSchedules2"],
+            $primitive["nameActivity3"],
+            $primitive["description3"],
+            $primitive["childrenSchedules3"],
+            $primitive["youthSchedules3"],
             (bool) $primitive["deleted"]
         );
     }

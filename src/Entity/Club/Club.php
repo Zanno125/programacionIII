@@ -7,24 +7,26 @@ final class Club {
     public function __construct(
         private readonly ?int $id,
         private string $name,
-        private string $clubLogo,
         private string $description,
-        private int $number_members, //no se usa
+        private string $address,
+        private string $activities,
+        private string $hours,
         private bool $deleted
     ) {
     }
 
-    public static function create(string $name, string $clubLogo, string $description, int $number_members): self
+    public static function create(string $name, string $description, string $address, string $activities, string $hours): self
     {
-        return new self(null, $name, $clubLogo, $description, $number_members, false);
+        return new self(null, $name, $description, $address, $activities, $hours, false);
     }
 
-    public function modify(string $name, string $clubLogo, string $description, int $number_members): void
+    public function modify(string $name, string $description, $address, $activities, $hours): void
     {
         $this->name = $name;
-        $this->clubLogo = $clubLogo;
         $this->description = $description;
-        $this->number_members = $number_members;
+        $this->address = $address;
+        $this->activities = $activities;
+        $this->hours = $hours;
     }
 
     public function delete(): void
@@ -42,19 +44,24 @@ final class Club {
         return $this->name;
     }
 
-    public function clubLogo(): string
-    {
-        return $this->clubLogo;
-    }
-
     public function description(): string
     {
         return $this->description;
     }
 
-    public function number_members(): int
+    public function address(): string
     {
-        return $this->number_members;
+        return $this->address;
+    }
+
+    public function activities(): string
+    {
+        return $this->activities;
+    }
+
+    public function hours(): string
+    {
+        return $this->hours;
     }
 
     public function isDeleted(): int

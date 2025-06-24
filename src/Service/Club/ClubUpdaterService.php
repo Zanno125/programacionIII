@@ -13,11 +13,11 @@ final readonly class ClubUpdaterService {
         $this->finder = new ClubFinderService();
     }
 
-    public function update(string $name, string $clubLogo, string $description, int $number_members, int $id): void
+    public function update(string $name, string $description, string $address, string $activities, string $hours, int $id): void
     {
         $club = $this->finder->find($id);
 
-        $club->modify($name, $clubLogo, $description, $number_members);
+        $club->modify($name, $description, $address, $activities, $hours);
 
         $this->repository->update($club);
     }

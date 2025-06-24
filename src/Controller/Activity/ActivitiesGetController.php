@@ -23,8 +23,18 @@ final readonly class ActivitiesGetController {
             $result[] = [
                 "id" => $response->id(),
                 "name" => $response->name(),
-                "id_club" => $response->id_club(),
-                "max_participants" => $response -> max_participants()
+                "nameActivity1" => $response->nameActivity1(),
+                "description1" => $response->description1(),
+                "childrenSchedules1" => $response->childrenSchedules1(),
+                "youthSchedules1" => $response->youthSchedules1(),
+                "nameActivity2" => $response->nameActivity2(),
+                "description2" => $response->description2(),
+                "childrenSchedules2" => $response->childrenSchedules2(),
+                "youthSchedules2" => $response->youthSchedules2(),
+                "nameActivity3" => $response->nameActivity3(),
+                "description3" => $response->description3(),
+                "childrenSchedules3" => $response->childrenSchedules3(),
+                "youthSchedules3" => $response->youthSchedules3()
             ];
         }
 
